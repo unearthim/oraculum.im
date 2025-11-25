@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- === 1. Primary Meta Tags (unearth.im Protocol v2.0) === -->
+    <title>Astrology Horoscope | The Astral Oracle</title>
+    <meta name="title" content="Astrology Horoscope | The Astral Oracle">
+    <meta name="description" content="Consult the Astral Oracle. Enter your Sun, Moon, and Rising signs to receive a daily, weekly, or monthly horoscope and a visual cosmic sigil from this Digital Monument by unearth.im.">
+    <meta name="keywords" content="horoscope, astrology, sun sign, moon sign, rising sign, ascendant, daily horoscope, weekly horoscope, monthly horoscope, digital divination, oracle, unearth.im, ai art, imagen, oraculum.im">
+    <meta name="author" content="oraculum.im (An unearth.im Project)">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+
+    <!-- === Canonical Link === -->
+    <link rel="canonical" href="https://oraculum.im/horoscope.html" />
+
+    <!-- === 2. Webmention Endpoint === -->
+    <link rel="webmention" href="https://webmention.io/unearth.im/webmention" />
+
+    <!-- === 3. Open Graph / Facebook === -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://oraculum.im/horoscope.html">
+    <meta property="og:title" content="Astrology Horoscope | The Astral Oracle">
+    <meta property="og:description" content="Consult the Astral Oracle. Enter your Sun, Moon, and Rising signs to receive a personalized horoscope and visual sigil.">
+    <meta property="og:image" content="https://oraculum.im/og-image.png">
+    <meta property="og:site_name" content="The Astral Oracle">
+
+    <!-- === 4. Twitter Card === -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://oraculum.im/horoscope.html">
+    <meta property="twitter:title" content="Astrology Horoscope | The Astral Oracle">
+    <meta property="twitter:description" content="Consult the Astral Oracle. Enter your Sun, Moon, and Rising signs to receive a personalized horoscope and visual sigil.">
+    <meta property="twitter:image" content="https://oraculum.im/og-image.png">
+
+    <!-- === 5. Favicons === -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="alternate icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- === 6. Brand Color Meta Tags === -->
+    <meta name="theme-color" content="#0F0C29">
+    <meta name="msapplication-TileColor" content="#302B63">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts (Lora & Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Applying "Oracle" Palette */
+        body {
+            font-family: 'Lora', serif;
+            color: #E0D6FF; /* Light Lavender */
+            background: linear-gradient(270deg, #0F0C29, #302B63, #24243E, #0F0C29);
+            background-size: 400% 400%;
+            animation: subtleGradient 25s ease infinite;
+        }
+        .font-sans {
+            font-family: 'Inter', sans-serif;
+        }
+        .font-serif {
+            font-family: 'Lora', serif;
+        }
+        
+        .oracle-focus {
+            background-color: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(167, 139, 250, 0.3);
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2), 0 0 30px rgba(167, 139, 250, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        /* Styles for text inputs */
+        .oracle-input, .oracle-select {
+            background-color: rgba(17, 24, 39, 0.6);
+            border: 1px solid rgba(129, 140, 163, 0.4);
+            color: #F3F4F6;
+            border-radius: 0.5rem;
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+        }
+        .oracle-input:focus, .oracle-select:focus {
+            outline: none;
+            border-color: #A78BFA;
+            box-shadow: 0 0 0 2px rgba(167, 139, 250, 0.3);
+        }
+        .oracle-input::placeholder {
+            color: #9CA3AF;
+        }
+        /* Fix for Safari select arrow color */
+        .oracle-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%239CA3AF' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3E%3C/svg%3E");
+            background-position: right 0.5rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+            padding-right: 2.5rem;
+        }
+
+        .oracle-button {
+            background-color: #7C3AED;
+            color: #FFFFFF;
+            transition: all 0.2s ease-in-out;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.2);
+        }
+        .oracle-button:hover {
+            background-color: #8B5CF6;
+            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.3);
+            transform: translateY(-1px);
+        }
+        .oracle-button:disabled {
+            background-color: #4B5563;
+            color: #9CA3AF;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .oracle-button-secondary {
+            background-color: transparent;
+            color: #A78BFA;
+            border: 1px solid #A78BFA;
+            transition: all 0.2s ease-in-out;
+            border-radius: 0.5rem;
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            margin-top: 0.75rem;
+        }
+        .oracle-button-secondary:hover {
+            background-color: rgba(167, 139, 250, 0.1);
+            color: #C4B5FD;
+        }
+        
+        .loader {
+            border: 4px solid #374151;
+            border-top: 4px solid #A78BFA;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes subtleGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .sigil-container {
+            background-color: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(167, 139, 250, 0.2);
+        }
+        .whisper-box {
+            background-color: rgba(0, 0, 0, 0.1);
+            border: 1px dashed rgba(167, 139, 250, 0.4);
+        }
+        
+        .title-glow {
+            text-shadow: 0 0 8px rgba(224, 214, 255, 0.3), 0 0 20px rgba(167, 139, 250, 0.3);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="antiasliased">
+
+    <div class="min-h-screen flex flex-col items-center justify-center p-4 py-12">
+        <header class="text-center mb-10 max-w-2xl mx-auto">
+            <h1 class="font-serif text-4xl md:text-6xl font-bold text-white tracking-tight title-glow">The Astral Oracle</h1>
+            <p class="font-sans text-lg text-purple-200 mt-2">A Digital Monument to the Cosmos</p>
+        </header>
+
+        <div class="max-w-xl mx-auto text-center mb-10 px-4">
+            <p class="font-sans text-base md:text-lg text-purple-200 leading-relaxed">
+                Enter your core placements and select a timeframe. The Oracle will cast a visual sigil and a whispered forecast, synthesized for your unique cosmic signature.
+            </p>
+        </div>
+
+        <main class="w-full max-w-2xl oracle-focus p-6 md:p-8">
+            
+            <form id="horoscope-form">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
+                    <!-- Sun Sign -->
+                    <div>
+                        <label for="sun-sign" class="font-sans text-base font-semibold text-purple-200 mb-2 block">Sun Sign:</label>
+                        <input type="text" id="sun-sign" class="oracle-input" placeholder="e.g., Leo" required>
+                    </div>
+                    <!-- Moon Sign -->
+                    <div>
+                        <label for="moon-sign" class="font-sans text-base font-semibold text-purple-200 mb-2 block">Moon Sign:</label>
+                        <input type="text" id="moon-sign" class="oracle-input" placeholder="e.g., Taurus" required>
+                    </div>
+                    <!-- Rising Sign -->
+                    <div>
+                        <label for="rising-sign" class="font-sans text-base font-semibold text-purple-200 mb-2 block">Rising (Ascendant):</label>
+                        <input type="text" id="rising-sign" class="oracle-input" placeholder="e.g., Scorpio" required>
+                    </div>
+                    <!-- Timeframe -->
+                    <div>
+                        <label for="timeframe" class="font-sans text-base font-semibold text-purple-200 mb-2 block">Timeframe:</label>
+                        <select id="timeframe" class="oracle-select">
+                            <option value="daily">Daily</option>
+                            <option value="weekly">Weekly</option>
+                            <option value="monthly">Monthly</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" id="generate-button" class="oracle-button font-bold py-3 px-5 w-full mt-6 font-sans text-lg">
+                    Consult the Oracle
+                </button>
+            </form>
+
+            <!-- Results Section -->
+            <div id="results-container" class="mt-8 space-y-8 hidden">
+                
+                <!-- Artifact (Image) -->
+                <div id="artifact-section" class="hidden fade-in">
+                    <h2 class="font-serif text-2xl font-bold text-purple-300 mb-4">Your Cosmic Sigil</h2>
+                    <div id="image-display" class="sigil-container w-full aspect-square rounded-lg flex items-center justify-center">
+                        <div class="loader"></div>
+                    </div>
+                    <button id="download-image-button" class="oracle-button-secondary hidden w-full md:w-auto">
+                        Download Sigil (.png)
+                    </button>
+                </div>
+
+                <!-- Interpretation (Text) -->
+                <div id="interpretation-section" class="fade-in">
+                    <h2 class="font-serif text-2xl font-bold text-purple-300 mb-4">The Oracle's Whisper</h2>
+                    <div id="interpretation-display" class="whisper-box w-full p-6 rounded-lg min-h-[10rem] flex items-center justify-center">
+                        <p id="interpretation-text" class="text-purple-100 text-lg leading-relaxed italic">The Oracle is consulting the stars...</p>
+                    </div>
+                    <button id="save-text-button" class="oracle-button-secondary hidden w-full md:w-auto">
+                        Save Whisper (.txt)
+                    </button>
+                </div>
+
+            </div>
+
+        </main>
+
+        <footer class="text-center pt-12 text-gray-400 font-sans">
+            <p>a digital monument by <a href="https://unearth.im" target="_blank" rel="noopener noreferrer" class="hover:text-purple-300 transition">unearth.im</a></p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // === CONFIGURATION ===
+            // Using your GenArt proxy URL (Supports both Text & Image)
+            const PROXY_URL = "https://genartproxy-ce7zb66hpq-uc.a.run.app";
+            
+            // --- DOM Elements ---
+            const horoscopeForm = document.getElementById('horoscope-form');
+            const sunSignInput = document.getElementById('sun-sign');
+            const moonSignInput = document.getElementById('moon-sign');
+            const risingSignInput = document.getElementById('rising-sign');
+            const timeframeSelect = document.getElementById('timeframe');
+            
+            const generateButton = document.getElementById('generate-button');
+            const resultsContainer = document.getElementById('results-container');
+            
+            // Image Elements
+            const artifactSection = document.getElementById('artifact-section');
+            const imageDisplay = document.getElementById('image-display');
+            const downloadImageButton = document.getElementById('download-image-button');
+
+            // Text Elements
+            const interpretationDisplay = document.getElementById('interpretation-display');
+            const saveTextButton = document.getElementById('save-text-button');
+
+            // --- State Variables ---
+            let currentImageUrl = null;
+            let currentInterpretationText = null;
+
+            /**
+             * Handles the Horoscope consultation process
+             */
+            horoscopeForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const sunSign = sunSignInput.value.trim();
+                const moonSign = moonSignInput.value.trim();
+                const risingSign = risingSignInput.value.trim();
+                const timeframe = timeframeSelect.value;
+
+                // --- 1. VALIDATION ---
+                if (!sunSign || !moonSign || !risingSign) {
+                    resultsContainer.classList.remove('hidden');
+                    interpretationDisplay.innerHTML = `<p class="text-red-400 p-4 text-center font-sans">Please enter all three signs to form your cosmic signature.</p>`;
+                    return;
+                }
+
+                // --- 2. SET UP UI FOR LOADING ---
+                generateButton.disabled = true;
+                generateButton.textContent = 'Casting...';
+                
+                downloadImageButton.classList.add('hidden');
+                saveTextButton.classList.add('hidden');
+                
+                resultsContainer.classList.remove('hidden');
+                
+                // Show sections
+                artifactSection.classList.remove('hidden');
+                imageDisplay.innerHTML = '<div class="loader"></div>';
+                
+                interpretationDisplay.innerHTML = '<div class="loader"></div>'; 
+                
+                // --- 3. PARALLEL EXECUTION: IMAGE & TEXT ---
+                // We launch both requests at the same time for speed (a Gemini 2.5 benefit!)
+                
+                const imagePrompt = `A mystical, high-definition tarot card design representing a cosmic signature of ${sunSign} Sun, ${moonSign} Moon, and ${risingSign} Rising. Intricate gold foil details, deep cosmic background, ethereal, magical, symmetrical composition, digital art, 8k resolution.`;
+                
+                const systemInstruction = buildSystemInstruction(sunSign, moonSign, risingSign, timeframe);
+                const userQuery = `Provide a ${timeframe} horoscope for a person with a ${sunSign} Sun, ${moonSign} Moon, and ${risingSign} Rising sign.`;
+
+                try {
+                    console.log("Launching parallel requests to Oracle...");
+
+                    // --- REQUEST 1: IMAGE (IMAGEN) ---
+                    const imagePromise = fetch(PROXY_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            mode: "generateImage",
+                            payload: { prompt: imagePrompt }
+                        })
+                    }).then(async (res) => {
+                        if (!res.ok) throw new Error("Image generation failed");
+                        const data = await res.json();
+                        return data.predictions?.[0]?.bytesBase64Encoded;
+                    });
+
+                    // --- REQUEST 2: TEXT (GEMINI) ---
+                    const textPromise = fetch(PROXY_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            // Using the simple payload structure your proxy prefers
+                            mode: "interpretDream", 
+                            payload: {
+                                prompt: userQuery,
+                                base64Data: null, // No image input for this one
+                                systemInstruction: systemInstruction
+                            }
+                        })
+                    }).then(async (res) => {
+                        if (!res.ok) throw new Error("Text generation failed");
+                        const data = await res.json();
+                        return data.candidates?.[0]?.content?.parts?.[0]?.text;
+                    });
+
+                    // --- WAIT FOR BOTH ---
+                    const [base64Image, textResult] = await Promise.all([imagePromise, textPromise]);
+
+                    // --- HANDLE IMAGE RESULT ---
+                    if (base64Image) {
+                        const imageUrl = `data:image/png;base64,${base64Image}`;
+                        currentImageUrl = imageUrl;
+                        imageDisplay.innerHTML = `<img src="${imageUrl}" alt="Cosmic Sigil" class="w-full h-full object-cover rounded-lg fade-in">`;
+                        downloadImageButton.classList.remove('hidden');
+                    } else {
+                        imageDisplay.innerHTML = '<p class="text-gray-400 font-sans">The visual sigil was elusive.</p>';
+                    }
+
+                    // --- HANDLE TEXT RESULT ---
+                    if (textResult) {
+                        currentInterpretationText = textResult;
+                        const formattedText = markdownToHtml(textResult);
+                        interpretationDisplay.innerHTML = `<p id="interpretation-text" class="text-purple-100 text-lg leading-relaxed">${formattedText}</p>`;
+                        saveTextButton.classList.remove('hidden');
+                    } else {
+                        interpretationDisplay.innerHTML = '<p class="text-red-400 font-sans">The stars were silent.</p>';
+                    }
+
+                } catch (error) {
+                    console.error("Oracle Error:", error);
+                    interpretationDisplay.innerHTML = `<p class="text-red-400 p-4 text-center font-sans">The connection to the void was interrupted. <br><span class="text-xs">${error.message}</span></p>`;
+                } finally {
+                    generateButton.disabled = false;
+                    generateButton.textContent = 'Consult the Oracle';
+                }
+            });
+
+            /**
+             * Builds the dynamic system instruction for the AI.
+             */
+            function buildSystemInstruction(sun, moon, rising, timeframe) {
+                const instruction = `You are "The Astral Oracle," a wise, poetic, and insightful astrologer. A user is asking for a horoscope.
+
+Their cosmic signature is:
+- Sun Sign: ${sun}
+- Moon Sign: ${moon}
+- Rising Sign (Ascendant): ${rising}
+
+The timeframe they are asking about is: ${timeframe}
+
+Your task is to provide a comprehensive, insightful, and accessible horoscope. Do *not* give three separate, generic readings. Your value is in *synthesizing* these three core placements.
+
+1.  Start by briefly acknowledging their "cosmic signature" (e.g., "For the one with the fiery ${sun} Sun, the deep ${moon} Moon, and the perceptive ${rising} Ascendant...").
+2.  Provide the ${timeframe} forecast.
+3.  Weave together the different parts of their life:
+    * Their core energy, drive, and public self (the ${sun} Sun).
+    * Their inner emotional world, needs, and private self (the ${moon} Moon).
+    * Their immediate lens on the world, first impressions, and the "self" they are growing into (the ${rising} Rising).
+4.  Speak poetically, like an oracle, but also provide clear, practical insights that are actionable and understandable.
+5.  Format your response with paragraphs for readability.
+
+After your main interpretation, add a section titled "**Summary of the Oracle's Whisper:**" and provide 2-3 bullet points (using a * or -) that summarize the key takeaways.
+`;
+                return instruction;
+            }
+
+
+            /**
+             * Converts simple Markdown to HTML.
+             */
+            function markdownToHtml(text) {
+                let html = text;
+
+                // 1. Handle Bold
+                html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+                
+                // 2. Handle Italics
+                html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+                
+                // 3. Handle stray thematic break asterisks (e.g., "\n*\n")
+                html = html.replace(/\n\s*\*\s*\n/g, '\n');
+
+                // 4. Handle bullet points (lines starting with * or -)
+                html = html.replace(/\n(?:\*|-)\s(.*?)/g, '\n<br><span class="ml-4">&bull; $1</span>');
+
+                // 5. Convert all remaining newlines to <br> tags for paragraphs
+                html = html.replace(/\n/g, '<br>');
+
+                return html;
+            }
+
+            // --- Download Listeners ---
+            downloadImageButton.addEventListener('click', () => {
+                if (!currentImageUrl) return;
+                const link = document.createElement('a');
+                link.href = currentImageUrl;
+                link.download = 'cosmic_sigil.png';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            });
+
+            saveTextButton.addEventListener('click', () => {
+                const sunSign = sunSignInput.value.trim();
+                const moonSign = moonSignInput.value.trim();
+                const risingSign = risingSignInput.value.trim();
+                const timeframe = timeframeSelect.value;
+                
+                if (!currentInterpretationText || !sunSign || !moonSign || !risingSign) return;
+
+                const fullText = `YOUR COSMIC SIGNATURE:\n====================\nSun: ${sunSign}\nMoon: ${moonSign}\nRising: ${risingSign}\nTimeframe: ${timeframe}\n\n\nORACLE'S WHISPER:\n====================\n${currentInterpretationText}`;
+                
+                const blob = new Blob([fullText], { type: 'text/plain;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'astral_whisper.txt'; // Filename
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url); // Clean up blob URL
+            });
+        });
+    </script>
+</body>
+</html>

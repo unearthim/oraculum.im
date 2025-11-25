@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- === 1. Primary Meta Tags (unearth.im Protocol v2.0) === -->
+    <title>I-Ching Divination | The Oracle of Changes</title>
+    <meta name="title" content="I-Ching Divination | The Oracle of Changes">
+    <meta name="description" content="Consult the Oracle of Changes. Cast the lines and receive a profound interpretation from the I-Ching, a Digital Monument by unearth.im.">
+    <meta name="keywords" content="I-Ching, I-Ching oracle, Book of Changes, digital divination, unearth.im, digital monument, oracle, synchronicity, gemini, oraculum.im">
+    <meta name="author" content="oraculum.im (An unearth.im Project)">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+
+    <!-- === Canonical Link === -->
+    <link rel="canonical" href="https://oraculum.im/iching.html" />
+
+    <!-- === 2. Webmention Endpoint === -->
+    <link rel="webmention" href="https://webmention.io/unearth.im/webmention" />
+
+    <!-- === 3. Open Graph / Facebook === -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://oraculum.im/iching.html">
+    <meta property="og:title" content="I-Ching Divination | The Oracle of Changes">
+    <meta property="og:description" content="Consult the Oracle of Changes. Cast the lines and receive a profound interpretation from the I-Ching.">
+    <meta property="og:image" content="https://oraculum.im/og-image.png">
+    <meta property="og:site_name" content="The Oracle of Changes">
+
+    <!-- === 4. Twitter Card === -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://oraculum.im/iching.html">
+    <meta property="twitter:title" content="I-Ching Divination | The Oracle of Changes">
+    <meta property="twitter:description" content="Consult the Oracle of Changes. Cast the lines and receive a profound interpretation from the I-Ching.">
+    <meta property="twitter:image" content="https://oraculum.im/og-image.png">
+
+    <!-- === 5. Favicons === -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="alternate icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- === 6. Brand Color Meta Tags === -->
+    <meta name="theme-color" content="#0F0C29">
+    <meta name="msapplication-TileColor" content="#302B63">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts (Lora & Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Applying "Oracle" Palette from dreams.html */
+        body {
+            font-family: 'Lora', serif;
+            color: #E0D6FF; /* Light Lavender */
+            background: linear-gradient(270deg, #0F0C29, #302B63, #24243E, #0F0C29);
+            background-size: 400% 400%;
+            animation: subtleGradient 25s ease infinite;
+        }
+        .font-sans {
+            font-family: 'Inter', sans-serif;
+        }
+        .font-serif {
+            font-family: 'Lora', serif;
+        }
+        
+        .oracle-focus {
+            background-color: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(167, 139, 250, 0.3);
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2), 0 0 30px rgba(167, 139, 250, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .oracle-textarea {
+            background-color: rgba(17, 24, 39, 0.6);
+            border: 1px solid rgba(129, 140, 163, 0.4);
+            color: #F3F4F6;
+            border-radius: 0.5rem;
+        }
+        .oracle-textarea:focus {
+            outline: none;
+            border-color: #A78BFA;
+            box-shadow: 0 0 0 2px rgba(167, 139, 250, 0.3);
+        }
+        .oracle-textarea::placeholder {
+            color: #9CA3AF;
+        }
+
+        .oracle-button {
+            background-color: #7C3AED;
+            color: #FFFFFF;
+            transition: all 0.2s ease-in-out;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.2);
+        }
+        .oracle-button:hover {
+            background-color: #8B5CF6;
+            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.3);
+            transform: translateY(-1px);
+        }
+        .oracle-button:disabled {
+            background-color: #4B5563;
+            color: #9CA3AF;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .oracle-button-secondary {
+            background-color: transparent;
+            color: #A78BFA;
+            border: 1px solid #A78BFA;
+            transition: all 0.2s ease-in-out;
+            border-radius: 0.5rem;
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            margin-top: 0.75rem;
+        }
+        .oracle-button-secondary:hover {
+            background-color: rgba(167, 139, 250, 0.1);
+            color: #C4B5FD;
+        }
+        
+        .loader {
+            border: 4px solid #374151;
+            border-top: 4px solid #A78BFA;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes subtleGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .whisper-box {
+            background-color: rgba(0, 0, 0, 0.1);
+            border: 1px dashed rgba(167, 139, 250, 0.4);
+        }
+        
+        .title-glow {
+            text-shadow: 0 0 8px rgba(224, 214, 255, 0.3), 0 0 20px rgba(167, 139, 250, 0.3);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="antiasliased">
+
+    <div class="min-h-screen flex flex-col items-center justify-center p-4 py-12">
+        <header class="text-center mb-10 max-w-2xl mx-auto">
+            <h1 class="font-serif text-4xl md:text-6xl font-bold text-white tracking-tight title-glow">The Oracle of Changes</h1>
+            <p class="font-sans text-lg text-purple-200 mt-2">A Digital Monument to Synchronicity</p>
+        </header>
+
+        <div class="max-w-xl mx-auto text-center mb-10 px-4">
+            <p class="font-sans text-base md:text-lg text-purple-200 leading-relaxed">
+                Quiet your mind and present your query. The Oracle will cast the lines of the I-Ching for you, revealing a hexagram from the void and returning its ancient whisper.
+            </p>
+        </div>
+
+        <main class="w-full max-w-2xl oracle-focus p-6 md:p-8">
+            
+            <form id="iching-form">
+                <label for="query-input" class="font-sans text-base font-semibold text-purple-200 mb-2 block">Focus your query (optional):</label>
+                <textarea id="query-input" class="oracle-textarea w-full px-4 py-3 text-base h-28" placeholder="I wonder about the path ahead..."></textarea>
+                <button type-="submit" id="generate-button" class="oracle-button font-bold py-3 px-5 w-full mt-4 font-sans text-lg">
+                    Consult the Oracle
+                </button>
+            </form>
+
+            <!-- Results Section -->
+            <div id="results-container" class="mt-8 space-y-8 hidden">
+                
+                <!-- Interpretation (Text) -->
+                <div id="interpretation-section">
+                    <h2 class="font-serif text-2xl font-bold text-purple-300 mb-4">The Oracle's Whisper</h2>
+                    <div id="interpretation-display" class="whisper-box w-full p-6 rounded-lg min-h-[10rem] flex items-center justify-center">
+                        <p id="interpretation-text" class="text-purple-100 text-lg leading-relaxed italic">The Oracle is casting the lines...</p>
+                    </div>
+                    <button id="save-text-button" class="oracle-button-secondary hidden w-full md:w-auto">
+                        Save Whisper (.txt)
+                    </button>
+                </div>
+
+            </div>
+
+        </main>
+
+        <footer class="text-center pt-12 text-gray-400 font-sans">
+            <p>a digital monument by <a href="https://unearth.im" target="_blank" rel="noopener noreferrer" class="hover:text-purple-300 transition">unearth.im</a></p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // === CONFIGURATION ===
+            // Using your TEXT-ONLY proxy URL
+            const PROXY_URL = "https://generatecontentproxy-ce7zb66hpq-uc.a.run.app";
+            
+            // --- DOM Elements ---
+            const ichingForm = document.getElementById('iching-form');
+            const queryInput = document.getElementById('query-input');
+            const generateButton = document.getElementById('generate-button');
+            const resultsContainer = document.getElementById('results-container');
+            const interpretationSection = document.getElementById('interpretation-section');
+            const interpretationDisplay = document.getElementById('interpretation-display');
+            const interpretationText = document.getElementById('interpretation-text');
+            const saveTextButton = document.getElementById('save-text-button');
+
+            // --- State Variables ---
+            let currentInterpretationText = null;
+
+            /**
+             * Handles the I-Ching consultation process
+             */
+            ichingForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                let userQuery = queryInput.value.trim();
+                if (!userQuery) {
+                    userQuery = "I seek general guidance.";
+                }
+
+                // --- 1. SET UP UI FOR LOADING ---
+                generateButton.disabled = true;
+                generateButton.textContent = 'Casting...';
+                
+                saveTextButton.classList.add('hidden');
+                resultsContainer.classList.remove('hidden');
+                resultsContainer.classList.add('fade-in');
+                interpretationDisplay.innerHTML = '<div class="loader"></div>'; // Show loader
+                
+                // --- 2. PERFORM THE CASTING (NEW!) ---
+                const casting = performCasting();
+
+                // --- 3. DEFINE PROMPTS BASED ON CASTING ---
+                const systemInstruction = buildSystemInstruction(casting, userQuery);
+
+                try {
+                    // --- 4. CALL THE TEXT-ONLY PROXY ---
+                    console.log("Calling text-only proxy for I-Ching interpretation...");
+                    console.log("Casting sent:", casting);
+                    
+                    // This proxy is simpler and likely expects the raw Gemini payload
+                    const payload = {
+                        contents: [{ parts: [{ text: userQuery }] }], // Send the user's query here
+                        systemInstruction: {
+                            parts: [{ text: systemInstruction }] // The system instruction now contains the casting results
+                        }
+                    };
+
+                    const response = await fetch(PROXY_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.details?.error?.message || errorData.error || "Interpretation failed.");
+                    }
+
+                    const result = await response.json();
+                    const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+
+                    if (text) {
+                        currentInterpretationText = text; // Store for download
+                        const formattedText = markdownToHtml(text);
+                        // Clear loader and set text
+                        interpretationDisplay.innerHTML = `<p id="interpretation-text" class="text-purple-100 text-lg leading-relaxed">${formattedText}</p>`;
+                        saveTextButton.classList.remove('hidden'); // Show text save button
+                    } else {
+                        throw new Error("No interpretation text received.");
+                    }
+
+                } catch (error) {
+                    console.error("Oracle Error:", error);
+                    interpretationDisplay.innerHTML = `<p class="text-red-400 p-4 text-center font-sans">The vision is clouded. Please try another query. <br><span class="text-xs">${error.message}</span></p>`;
+                } finally {
+                    generateButton.disabled = false;
+                    generateButton.textContent = 'Consult the Oracle';
+                }
+            });
+
+            // --- I-CHING CASTING LOGIC ---
+
+            /**
+             * Simulates casting three coins to get a line value (6, 7, 8, or 9).
+             */
+            function castLine() {
+                const coin1 = Math.random() < 0.5 ? 2 : 3; // 2 (Tails) or 3 (Heads)
+                const coin2 = Math.random() < 0.5 ? 2 : 3;
+                const coin3 = Math.random() < 0.5 ? 2 : 3;
+                return coin1 + coin2 + coin3; // Returns 6, 7, 8, or 9
+            }
+
+            /**
+             * Performs the full 6-line casting.
+             */
+            function performCasting() {
+                const castLines = []; // Stores the 6 numbers (6, 7, 8, or 9)
+                for (let i = 0; i < 6; i++) {
+                    castLines.push(castLine());
+                }
+                
+                // Helper functions to interpret the cast
+                const getLineType = (n) => (n === 7 || n === 9) ? 'Yang' : 'Yin';
+                const isChanging = (n) => n === 6 || n === 9;
+                const getTransformedLineType = (n) => {
+                    if (n === 7) return 'Yang'; // Unchanging Yang
+                    if (n === 8) return 'Yin';  // Unchanging Yin
+                    if (n === 9) return 'Yin';  // Changing Yang -> Yin
+                    if (n === 6) return 'Yang'; // Changing Yin -> Yang
+                };
+
+                const primaryLines = castLines.map(getLineType);
+                const changingLines = castLines.map(isChanging);
+                const transformedLines = castLines.map(getTransformedLineType);
+                const hasChangingLines = changingLines.some(line => line === true);
+
+                return { castLines, primaryLines, changingLines, transformedLines, hasChangingLines };
+            }
+
+            /**
+             * Builds the dynamic system instruction for the AI based on the casting results.
+             */
+            function buildSystemInstruction(casting, userQuery) {
+                // Create the text describing the cast for the AI
+                const castingDataPrompt = `
+Casting Results (lines from bottom to top):
+====================
+Primary Hexagram Lines: ${casting.primaryLines.join(', ')}
+Changing Lines: ${casting.changingLines.join(', ')}
+${casting.hasChangingLines ? `Transformed Hexagram Lines: ${casting.transformedLines.join(', ')}` : 'This is a static hexagram.'}
+====================
+User's Query: ${userQuery}
+`;
+
+                const instruction = `You are a wise and ancient interpreter of the I-Ching (the 'Book of Changes'). A user has digitally cast the coins, and you must interpret the results.
+
+Here are the results of their casting:
+${castingDataPrompt}
+
+Your task is to:
+1.  Based on the 'Primary Hexagram Lines', identify and announce its name and number (e.g., 'The lines have formed Hexagram 1, *Ch'ien / The Creative*').
+${casting.hasChangingLines ? `2.  Identify the specific changing lines by their position (e.g., '...with changing lines at the third and sixth positions.').
+3.  Briefly interpret the meaning *of those specific changing lines*.
+4.  Based on the 'Transformed Hexagram Lines', identify and announce the new hexagram (e.g., 'This transforms into Hexagram 44, *Kou / Coming to Meet*').
+5.  Finally, provide a brief, profound, and symbolic interpretation of this *entire journey* from the primary to the transformed hexagram, relating it to the user's query.` : `2.  Since this is a static hexagram with no changing lines, provide a profound, symbolic interpretation of the Primary Hexagram as it relates to the user's current situation and query.`}
+
+Speak poetically, like an oracle, in accessible language. Format your response with paragraphs for readability. Subtly weave your interpretation to address the user's query.
+
+After your main interpretation, add a section titled "**Summary of the Oracle's Whisper:**" and provide 2-3 bullet points (using a * or -) that summarize the key takeaways.
+`;
+                return instruction;
+            }
+
+
+            /**
+             * Converts simple Markdown to HTML.
+             */
+            function markdownToHtml(text) {
+                let html = text;
+
+                // 1. Handle Bold
+                html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+                
+                // 2. Handle Italics
+                html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+                
+                // 3. Handle stray thematic break asterisks (e.g., "\n*\n")
+                // Replaces a newline, optional space, asterisk, optional space, and newline
+                // with just a single newline. This effectively removes the asterisk line.
+                html = html.replace(/\n\s*\*\s*\n/g, '\n');
+
+                // 4. Handle bullet points (lines starting with * or -)
+                // This must come AFTER the stray asterisk fix, or it might catch it.
+                // We look for a newline, then the bullet, then capture the text.
+                html = html.replace(/\n(?:\*|-)\s(.*?)/g, '\n<br><span class="ml-4">&bull; $1</span>');
+
+                // 5. Convert all remaining newlines to <br> tags for paragraphs
+                // This will also handle the \n\n for paragraph breaks, turning them into <br><br>
+                html = html.replace(/\n/g, '<br>');
+
+                return html;
+            }
+
+            // --- Download Listener ---
+            saveTextButton.addEventListener('click', () => {
+                const userQuery = queryInput.value.trim() || "General Guidance";
+                if (!currentInterpretationText) return;
+
+                const fullText = `YOUR QUERY:\n====================\n${userQuery}\n\n\nORACLE'S WHISPER:\n====================\n${currentInterpretationText}`;
+                
+                const blob = new Blob([fullText], { type: 'text/plain;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'iching_whisper.txt'; // Filename
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url); // Clean up blob URL
+            });
+        });
+    </script>
+</body>
+</html>

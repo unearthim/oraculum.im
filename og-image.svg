@@ -1,0 +1,18 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600&amp;family=Inter:wght@400" rel="stylesheet" type="text/css" />
+        <radialGradient id="grad" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+            <stop offset="0%" style="stop-color:#302B63;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#05040E;stop-opacity:1" />
+        </radialGradient>
+        <style>
+            .title { font-family: 'Lora', serif; font-size: 90px; fill: #E0D6FF; font-weight: 600; text-shadow: 0 0 20px rgba(167, 139, 250, 0.5); }
+            .subtitle { font-family: 'Inter', sans-serif; font-size: 28px; fill: #C4B5FD; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; }
+        </style>
+    </defs>
+    <rect width="1200" height="630" fill="url(#grad)" />
+    <g transform="translate(600, 315)" text-anchor="middle">
+        <text y="-25" class="title">The Oracle Nexus</text>
+        <text y="45" class="subtitle">unearth.im Digital Monuments</text>
+    </g>
+</svg>
