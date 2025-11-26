@@ -761,17 +761,35 @@
              */
 
             function markdownToHtml(text) {
-
-                // Use a regular expression to find text wrapped in single asterisks
-
-                // and replace them with <em> tags.
-
-                // The 'g' flag ensures all occurrences are replaced.
-
-                // The '?' makes the '+' non-greedy, so it stops at the first closing asterisk.
-
-                return text.replace(/\*(.+?)\*/g, '<em>$1</em>');
-
+                // Convert markdown to proper HTML
+                let html = text;
+                
+                // Headers (### becomes <h3>, ## becomes <h2>, # becomes <h1>)
+                html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+                html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
+                html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
+                
+                // Bold and italic combined (***text*** or ___text___)
+                html = html.replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>');
+                html = html.replace(/___(.+?)___/g, '<strong><em>$1</em></strong>');
+                
+                // Bold (**text** or __text__)
+                html = html.replace(/\*\*(.+?)\*\*(?!\*)/g, '<strong>$1</strong>');
+                html = html.replace(/__(.+?)__(?!_)/g, '<strong>$1</strong>');
+                
+                // Italic (*text* or _text_) - do this last to avoid conflicts
+                html = html.replace(/\*([^*\n]+?)\*(?!\*)/g, '<em>$1</em>');
+                html = html.replace(/_([^_\n]+?)_(?!_)/g, '<em>$1</em>');
+                
+                // Line breaks - convert double newlines to paragraph breaks
+                html = html.split('\n\n').map(para => {
+                    if (para.trim().startsWith('<h')) {
+                        return para; // Don't wrap headers in <p>
+                    }
+                    return '<p>' + para.replace(/\n/g, '<br>') + '</p>';
+                }).join('\n');
+                
+                return html;
             }
 
 

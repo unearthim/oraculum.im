@@ -438,21 +438,30 @@ After your main interpretation, add a section titled "**Summary of the Oracle's 
              * Converts simple Markdown to HTML.
              */
             function markdownToHtml(text) {
+                // Convert markdown to proper HTML
                 let html = text;
-
-                // 1. Handle Bold
-                html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
                 
-                // 2. Handle Italics
-                html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+                // Headers (### becomes <h3>, ## becomes <h2>, # becomes <h1>)
+                html = html.replace(/^### (.+)$/gm, '<h3 class="text-purple-300 font-bold text-xl mt-4 mb-2">$1</h3>');
+                html = html.replace(/^## (.+)$/gm, '<h2 class="text-purple-300 font-bold text-2xl mt-4 mb-2">$1</h2>');
+                html = html.replace(/^# (.+)$/gm, '<h1 class="text-purple-300 font-bold text-3xl mt-4 mb-2">$1</h1>');
                 
-                // 3. Handle stray thematic break asterisks (e.g., "\n*\n")
-                html = html.replace(/\n\s*\*\s*\n/g, '\n');
-
-                // 4. Handle bullet points (lines starting with * or -)
+                // Bold and italic combined (***text*** or ___text___)
+                html = html.replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>');
+                html = html.replace(/___(.+?)___/g, '<strong><em>$1</em></strong>');
+                
+                // Bold (**text** or __text__)
+                html = html.replace(/\*\*(.+?)\*\*(?!\*)/g, '<strong>$1</strong>');
+                html = html.replace(/__(.+?)__(?!_)/g, '<strong>$1</strong>');
+                
+                // Italic (*text* or _text_) - do this last to avoid conflicts
+                html = html.replace(/\*([^*\n]+?)\*(?!\*)/g, '<em>$1</em>');
+                html = html.replace(/_([^_\n]+?)_(?!_)/g, '<em>$1</em>');
+                
+                // Handle bullet points (lines starting with * or -)
                 html = html.replace(/\n(?:\*|-)\s(.*?)/g, '\n<br><span class="ml-4">&bull; $1</span>');
-
-                // 5. Convert all remaining newlines to <br> tags for paragraphs
+                
+                // Convert remaining newlines to <br> tags
                 html = html.replace(/\n/g, '<br>');
 
                 return html;
