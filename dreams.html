@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- === 1. Primary Meta Tags (unearth.im Protocol v2.0) === -->
     <title>Dream Interpretation | The Oneiric Oracle</title>
     <meta name="title" content="Dream Interpretation | The Oneiric Oracle">
     <meta name="description" content="Offer your dream to the Oneiric Oracle. Let the foundry unearth its visual sigil and interpret its narrative meaning.">
@@ -14,13 +13,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="language" content="English">
 
-    <!-- === Canonical Link === -->
     <link rel="canonical" href="https://oraculum.im/dreams.html" />
 
-    <!-- === 2. Webmention Endpoint === -->
     <link rel="webmention" href="https://webmention.io/unearth.im/webmention" />
 
-    <!-- === 3. Open Graph / Facebook === -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://oraculum.im/dreams.html">
     <meta property="og:title" content="Dream Interpretation | The Oneiric Oracle">
@@ -28,26 +24,21 @@
     <meta property="og:image" content="https://oraculum.im/og-image.png">
     <meta property="og:site_name" content="The Oneiric Oracle">
 
-    <!-- === 4. Twitter Card === -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://oraculum.im/dreams.html">
     <meta property="twitter:title" content="Dream Interpretation | The Oneiric Oracle">
     <meta property="twitter:description" content="Offer your dream to the Oneiric Oracle. Let the foundry unearth its visual sigil and interpret its narrative meaning.">
     <meta property="twitter:image" content="https://oraculum.im/og-image.png">
 
-    <!-- === 5. Favicons === -->
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="alternate icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-    <!-- === 6. Brand Color Meta Tags === -->
     <meta name="theme-color" content="#0F0C29">
     <meta name="msapplication-TileColor" content="#302B63">
 
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts (unearth.im Standard: Lora & Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -180,7 +171,6 @@
             <p class="font-sans text-lg text-purple-200 mt-2">A Vessel for Visions of the Subconscious</p>
         </header>
 
-        <!-- New introductory paragraph -->
         <div class="max-w-xl mx-auto text-center mb-10 px-4">
             <p class="font-sans text-base md:text-lg text-purple-200 leading-relaxed">
                 Offer a fragment of your slumber to the void. The Oracle will first cast a visual sigil from its essence, then return a whisper—a narrative interpretation of the vision you've shared.
@@ -197,22 +187,18 @@
                 </button>
             </form>
 
-            <!-- Results Section -->
             <div id="results-container" class="mt-8 space-y-8">
                 
-                <!-- Artifact (Image) -->
                 <div id="artifact-section" class="hidden">
                     <h2 class="font-serif text-2xl font-bold text-purple-300 mb-4">The Waking Sigil</h2>
                     <div id="image-display" class="sigil-container w-full aspect-square rounded-lg flex items-center justify-center">
                         <p id="placeholder-text" class="text-gray-400 font-sans">The void gazes back...</p>
-                        <!-- Loader and Image will be injected here -->
-                    </div>
+                        </div>
                     <button id="download-image-button" class="oracle-button-secondary hidden w-full md:w-auto">
                         Download Sigil (.png)
                     </button>
                 </div>
 
-                <!-- Interpretation (Text) -->
                 <div id="interpretation-section" class="hidden">
                     <h2 class="font-serif text-2xl font-bold text-purple-300 mb-4">The Oracle's Whisper</h2>
                     <div id="interpretation-display" class="whisper-box w-full p-6 rounded-lg">
@@ -312,7 +298,11 @@
                     }
                     
                     const imageResult = await imageResponse.json();
-                    base64Data = imageResult.predictions?.[0]?.bytesBase64Encoded;
+                    
+                    // --- KEY FIX: Updated to parse Gemini Flash Image Response ---
+                    // Old: imageResult.predictions?.[0]?.bytesBase64Encoded
+                    // New: imageResult.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data
+                    base64Data = imageResult.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
 
                     if (base64Data) {
                         const imageUrl = `data:image/png;base64,${base64Data}`;
