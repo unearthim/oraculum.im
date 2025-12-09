@@ -358,11 +358,9 @@
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
-                            // Using the simple payload structure your proxy prefers
-                            mode: "interpretDream", 
+                            mode: "generateText",
                             payload: {
                                 prompt: userQuery,
-                                base64Data: null, // No image input for this one
                                 systemInstruction: systemInstruction
                             }
                         })
@@ -442,9 +440,9 @@ After your main interpretation, add a section titled "**Summary of the Oracle's 
                 let html = text;
                 
                 // Headers (### becomes <h3>, ## becomes <h2>, # becomes <h1>)
-                html = html.replace(/^### (.+)$/gm, '<h3 class="text-purple-300 font-bold text-xl mt-4 mb-2">$1</h3>');
-                html = html.replace(/^## (.+)$/gm, '<h2 class="text-purple-300 font-bold text-2xl mt-4 mb-2">$1</h2>');
-                html = html.replace(/^# (.+)$/gm, '<h1 class="text-purple-300 font-bold text-3xl mt-4 mb-2">$1</h1>');
+                html = html.replace(/^### (.+)$/gm, '<h3 class="text-purple-300 font-bold text-xl mt-6 mb-3">$1</h3>');
+                html = html.replace(/^## (.+)$/gm, '<h2 class="text-purple-300 font-bold text-2xl mt-6 mb-3">$1</h2>');
+                html = html.replace(/^# (.+)$/gm, '<h1 class="text-purple-300 font-bold text-3xl mt-6 mb-3">$1</h1>');
                 
                 // Bold and italic combined (***text*** or ___text___)
                 html = html.replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>');
@@ -459,10 +457,16 @@ After your main interpretation, add a section titled "**Summary of the Oracle's 
                 html = html.replace(/_([^_\n]+?)_(?!_)/g, '<em>$1</em>');
                 
                 // Handle bullet points (lines starting with * or -)
-                html = html.replace(/\n(?:\*|-)\s(.*?)/g, '\n<br><span class="ml-4">&bull; $1</span>');
+                html = html.replace(/^[\*\-]\s+(.+)$/gm, '<div class="ml-4 mb-2">&bull; $1</div>');
                 
-                // Convert remaining newlines to <br> tags
-                html = html.replace(/\n/g, '<br>');
+                // Convert double line breaks to paragraph breaks
+                html = html.replace(/\n\n+/g, '</p><p class="mb-4">');
+                
+                // Wrap in paragraph tags
+                html = '<p class="mb-4">' + html + '</p>';
+                
+                // Clean up empty paragraphs
+                html = html.replace(/<p class="mb-4"><\/p>/g, '');
 
                 return html;
             }
