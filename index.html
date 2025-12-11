@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,11 @@
     <!-- === 1. Primary Meta Tags (unearth.im Protocol v2.0) === -->
     <title>The Oracle Nexus | oraculum.im</title>
     <meta name="title" content="The Oracle Nexus | oraculum.im">
-    <meta name="description" content="The central portal to the oraculum.im Digital Monuments. Consult the Sentinel to find your path to the Oneiric, Astral, or Changing Oracles.">
-    <meta name="keywords" content="oracle, divination, ai, gemini, unearth.im, digital monument, landing page, portal, nexus, oraculum.im">
-    <meta name="author" content="oraculum.im (An unearth.im Project)">
+    <meta name="description"
+        content="The central portal to the oraculum.im Digital Monuments. Consult the Sentinel to find your path to the Oneiric, Astral, or Changing Oracles.">
+    <meta name="keywords"
+        content="oracle, divination, ai, gemini, unearth.im, digital monument, landing page, portal, nexus, oraculum.im">
+    <meta name="author" content="oraculum.im (by unearth heritage foundry - archive & anvil - unearth.im)">
     <meta name="robots" content="index, follow">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="language" content="English">
@@ -48,7 +51,8 @@
         {
           "@type": "Organization",
           "@id": "https://unearth.im/#organization",
-          "name": "unearth.im",
+          "name": "Unearth Heritage Foundry",
+"alternateName": ["Unearth Foundry","Archive & Anvil","Unearth Anvil","Unearth Works","Cultural Infrastructure Foundry"],
           "url": "https://unearth.im/",
           "logo": {
             "@type": "ImageObject",
@@ -86,7 +90,8 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://oraculum.im/">
     <meta property="og:title" content="The Oracle Nexus | oraculum.im">
-    <meta property="og:description" content="The central portal to the oraculum.im Digital Monuments. Consult the Sentinel to find your path.">
+    <meta property="og:description"
+        content="The central portal to the oraculum.im Digital Monuments. Consult the Sentinel to find your path.">
     <meta property="og:image" content="https://oraculum.im/og-image.png">
     <meta property="og:site_name" content="The Oracle Nexus">
 
@@ -94,7 +99,8 @@
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://oraculum.im/">
     <meta property="twitter:title" content="The Oracle Nexus | oraculum.im">
-    <meta property="twitter:description" content="The central portal to the oraculum.im Digital Monuments. Consult the Sentinel to find your path.">
+    <meta property="twitter:description"
+        content="The central portal to the oraculum.im Digital Monuments. Consult the Sentinel to find your path.">
     <meta property="twitter:image" content="https://oraculum.im/og-image.png">
 
     <!-- === 5. Favicons === -->
@@ -108,18 +114,21 @@
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Google Fonts (Lora & Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
     <style>
         /* Applying "Nexus" Palette - Darker, deeper than the Oracles */
         body {
             font-family: 'Lora', serif;
             color: #E0D6FF;
-            background: #05040E; /* Very dark base */
+            background: #05040E;
+            /* Very dark base */
             position: relative;
             overflow-x: hidden;
         }
@@ -131,21 +140,34 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
+            background:
                 radial-gradient(circle at 20% 30%, rgba(124, 58, 237, 0.15) 0%, transparent 50%),
                 radial-gradient(circle at 80% 70%, rgba(167, 139, 250, 0.1) 0%, transparent 50%);
             filter: blur(60px);
             z-index: -1;
             animation: nebulaPulse 15s ease-in-out infinite alternate;
         }
+
         @keyframes nebulaPulse {
-            0% { transform: scale(1); opacity: 0.8; }
-            100% { transform: scale(1.1); opacity: 1; }
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
         }
 
-        .font-sans { font-family: 'Inter', sans-serif; }
-        .font-serif { font-family: 'Lora', serif; }
-        
+        .font-sans {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .font-serif {
+            font-family: 'Lora', serif;
+        }
+
         /* Glass Cards */
         .oracle-card {
             background: rgba(255, 255, 255, 0.03);
@@ -153,12 +175,14 @@
             backdrop-filter: blur(10px);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
         .oracle-card:hover {
             background: rgba(255, 255, 255, 0.08);
             border-color: rgba(167, 139, 250, 0.3);
             transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
+
         /* Active State (highlighted by AI) */
         .oracle-card.recommended {
             border-color: #A78BFA;
@@ -171,6 +195,7 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
         }
+
         .input-area:focus-within {
             border-color: #A78BFA;
             box-shadow: 0 0 20px rgba(124, 58, 237, 0.15);
@@ -184,30 +209,50 @@
             box-shadow: 0 0 10px rgba(75, 85, 99, 0.5);
             transition: all 0.5s ease;
         }
+
         .sentinel-eye.active {
             background-color: #A78BFA;
             box-shadow: 0 0 20px #A78BFA, 0 0 40px #7C3AED;
         }
 
-        .fade-in { animation: fadeIn 0.8s ease-out forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
         .typewriter::after {
             content: '|';
             animation: blink 1s infinite;
         }
-        @keyframes blink { 50% { opacity: 0; } }
 
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
     </style>
 </head>
+
 <body class="min-h-screen flex flex-col text-gray-200">
     <div class="nebula"></div>
 
     <!-- === HERO === -->
     <div class="flex-grow flex flex-col items-center justify-center p-6 relative z-10">
-        
+
         <div class="text-center mb-12 fade-in" style="animation-delay: 0.1s;">
-            <h1 class="font-serif text-5xl md:text-7xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-purple-300 mb-4">
+            <h1
+                class="font-serif text-5xl md:text-7xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-purple-300 mb-4">
                 The Oracle Nexus
             </h1>
             <p class="font-sans text-purple-200/60 text-lg tracking-wide uppercase text-xs">
@@ -221,29 +266,33 @@
                 <div id="sentinel-eye" class="sentinel-eye"></div>
                 <span class="font-sans text-xs uppercase tracking-widest text-gray-400">The Sentinel</span>
             </div>
-            
+
             <div class="input-area rounded-2xl p-2 flex flex-col md:flex-row gap-2">
-                <input type="text" id="user-input" 
+                <input type="text" id="user-input"
                     class="bg-transparent border-none outline-none text-lg px-4 py-3 w-full text-white placeholder-gray-600 font-serif"
                     placeholder="Tell the void how you feel..." autocomplete="off">
-                <button id="consult-btn" 
+                <button id="consult-btn"
                     class="bg-purple-900/50 hover:bg-purple-800 text-purple-100 font-sans font-semibold px-8 py-3 rounded-xl transition-all border border-purple-700/30 whitespace-nowrap">
                     Ask the Way
                 </button>
             </div>
-            
+
             <!-- AI Response Area -->
-            <div id="sentinel-response" class="mt-4 px-4 min-h-[3rem] text-purple-200/80 font-serif italic text-lg hidden">
+            <div id="sentinel-response"
+                class="mt-4 px-4 min-h-[3rem] text-purple-200/80 font-serif italic text-lg hidden">
                 <!-- Text injected here -->
             </div>
         </div>
 
         <!-- === THE ARTIFACTS === -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl fade-in" style="animation-delay: 0.5s;">
-            
+
             <!-- Card 1: DREAMS -->
-            <a href="dreams.html" id="card-dreams" class="oracle-card group rounded-2xl p-8 flex flex-col items-center text-center relative overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-b from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <a href="dreams.html" id="card-dreams"
+                class="oracle-card group rounded-2xl p-8 flex flex-col items-center text-center relative overflow-hidden">
+                <div
+                    class="absolute inset-0 bg-gradient-to-b from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                </div>
                 <div class="text-4xl mb-4 opacity-80 group-hover:scale-110 transition-transform duration-500">👁️</div>
                 <h3 class="font-serif text-2xl font-bold text-white mb-2">The Oneiric Oracle</h3>
                 <p class="font-sans text-sm text-gray-400 leading-relaxed">
@@ -252,8 +301,11 @@
             </a>
 
             <!-- Card 2: I-CHING -->
-            <a href="iching.html" id="card-iching" class="oracle-card group rounded-2xl p-8 flex flex-col items-center text-center relative overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-b from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <a href="iching.html" id="card-iching"
+                class="oracle-card group rounded-2xl p-8 flex flex-col items-center text-center relative overflow-hidden">
+                <div
+                    class="absolute inset-0 bg-gradient-to-b from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                </div>
                 <div class="text-4xl mb-4 opacity-80 group-hover:scale-110 transition-transform duration-500">🪙</div>
                 <h3 class="font-serif text-2xl font-bold text-white mb-2">Oracle of Changes</h3>
                 <p class="font-sans text-sm text-gray-400 leading-relaxed">
@@ -262,8 +314,11 @@
             </a>
 
             <!-- Card 3: STARS -->
-            <a href="horoscope.html" id="card-astral" class="oracle-card group rounded-2xl p-8 flex flex-col items-center text-center relative overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-b from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <a href="horoscope.html" id="card-astral"
+                class="oracle-card group rounded-2xl p-8 flex flex-col items-center text-center relative overflow-hidden">
+                <div
+                    class="absolute inset-0 bg-gradient-to-b from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                </div>
                 <div class="text-4xl mb-4 opacity-80 group-hover:scale-110 transition-transform duration-500">✨</div>
                 <h3 class="font-serif text-2xl font-bold text-white mb-2">The Astral Oracle</h3>
                 <p class="font-sans text-sm text-gray-400 leading-relaxed">
@@ -278,8 +333,13 @@
     <footer class="p-8 text-center text-gray-600 font-sans text-sm relative z-10">
         <p>
             <small>
-                a <b><a href="https://sentientification.com" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-purple-400 transition">liminal mind meld</a></b> collaboration:<br>
-                digital monument by <b><a href="https://unearth.im" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-purple-400 transition">unearth.im</a></b> | <b><a href="https://archaeobytology.org" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-purple-400 transition">archive & anvil</a></b>
+                a <b><a href="https://sentientification.com" target="_blank" rel="noopener noreferrer"
+                        class="text-gray-500 hover:text-purple-400 transition">liminal mind meld</a></b>
+                collaboration:<br>
+                digital monument by <b><a href="https://unearth.im" target="_blank" rel="noopener noreferrer"
+                        class="text-gray-500 hover:text-purple-400 transition">unearth.im</a></b> | <b><a
+                        href="https://archaeobytology.org" target="_blank" rel="noopener noreferrer"
+                        class="text-gray-500 hover:text-purple-400 transition">archive & anvil</a></b>
             </small>
         </p>
     </footer>
@@ -287,12 +347,12 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const PROXY_URL = "https://generatecontentproxy-ce7zb66hpq-uc.a.run.app"; // Text-only proxy is sufficient here
-            
+
             const userInput = document.getElementById('user-input');
             const consultBtn = document.getElementById('consult-btn');
             const sentinelEye = document.getElementById('sentinel-eye');
             const responseArea = document.getElementById('sentinel-response');
-            
+
             const cards = {
                 'dreams': document.getElementById('card-dreams'),
                 'iching': document.getElementById('card-iching'),
@@ -309,7 +369,7 @@
                 sentinelEye.classList.add('active'); // Pulse effect
                 responseArea.classList.add('hidden');
                 responseArea.innerHTML = '';
-                
+
                 // Reset cards
                 Object.values(cards).forEach(c => c.classList.remove('recommended', 'opacity-50'));
 
@@ -344,7 +404,7 @@
 
                     const data = await response.json();
                     const textResponse = data.candidates?.[0]?.content?.parts?.[0]?.text;
-                    
+
                     // 3. Parse JSON Response
                     // Clean up any markdown code blocks if the AI adds them
                     const cleanJson = textResponse.replace(/```json/g, '').replace(/```/g, '').trim();
@@ -380,8 +440,8 @@
                 element.textContent = '';
                 element.classList.add('typewriter');
                 let i = 0;
-                const speed = 30; 
-                
+                const speed = 30;
+
                 function type() {
                     if (i < text.length) {
                         element.textContent += text.charAt(i);
@@ -401,4 +461,5 @@
         });
     </script>
 </body>
+
 </html>
